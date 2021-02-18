@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<data name="Classes">
+    <movie title="Barbarian">
+        <hitDie>  d12  </hitDie>
+        <primaryAbility> Strength   </primaryAbility>
+        <saves>Strength and Constitution </saves>
+        <description> A fierce warrior of primitive background who can enter a battle rage.</description>
+    </movie>
+    <movie title="">
+        <type>  </type>
+        <hitDie>    </hitDie>
+        <primaryAbility>    </primaryAbility>
+        <saves> </saves>
+        <description>   </description>
+    </movie>
+    <movie title="">
+        <type>  </type>
+        <hitDie>    </hitDie>
+        <primaryAbility>    </primaryAbility>
+        <saves> </saves>
+        <description>   </description>
+    </movie>
+    <movie title="">
+        <type>  </type>
+        <hitDie>    </hitDie>
+        <primaryAbility>    </primaryAbility>
+        <saves> </saves>
+        <description>   </description>
+    </movie>
+    <movie title="">
+        <type>  </type>
+        <hitDie>    </hitDie>
+        <primaryAbility>    </primaryAbility>
+        <saves> </saves>
+        <description>   </description>
+    </movie>
+
+</data>

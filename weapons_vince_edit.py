@@ -1,36 +1,40 @@
 from random import randint, choice
 
-#TODO: Thank your local Vincent for cleaning up the nightmare field of IF conditions
 
-#TYPES
+# TODO: Thank your local Vincent for cleaning up the nightmare field of IF conditions
+
+# TYPES
 class WeaponType():
     def __init__(self, name, damage):
         self.name = name
         self.damage = damage
-        
+
+
 class WeaponModifier():
     def __init__(self, name, effect):
         self.name = name
         self.effect = effect
 
+
 class Weapon():
-    def __init__(self, weaponType, modifier = None):
+    def __init__(self, weaponType, modifier=None):
         self.weaponType = weaponType
         self.modifier = modifier
-        
-    def __str__(self):
-        if(self.modifier == None):
-            return self.weaponType.name+"\n"+self.weaponType.damage
-        return self.weaponType.name+" of "+self.modifier.name+"\n"+self.weaponType.damage+"\n"+self.modifier.effect
 
-#USER DEFINED WEAPONS
+    def __str__(self):
+        if (self.modifier == None):
+            return self.weaponType.name + "\n" + self.weaponType.damage
+        return self.weaponType.name + " of " + self.modifier.name + "\n" + self.weaponType.damage + "\n" + self.modifier.effect
+
+
+# USER DEFINED WEAPONS
 weaponCategories = ['Sword', 'Ranged', 'Hammer', 'Magic']
 
 swordWeapons = [
-    WeaponType('Dagger', '1d4, piercing'), 
-    WeaponType('Longsword (1H)', '1d6, piercing'), 
-    WeaponType('Greatsword (2H)', '2d6, 19-20 x2'), 
-    WeaponType('Scythe (2H)', '2d4, x4'), 
+    WeaponType('Dagger', '1d4, piercing'),
+    WeaponType('Longsword (1H)', '1d6, piercing'),
+    WeaponType('Greatsword (2H)', '2d6, 19-20 x2'),
+    WeaponType('Scythe (2H)', '2d4, x4'),
     WeaponType('Bastard Sword', '1d10, 19-20 x2')]
 rangedWeapons = [
     WeaponType('Crossbow', '1d8, 19-20 x2'),
@@ -49,15 +53,15 @@ hammerWeapons = [
 magicWeapons = [
     WeaponType('Wand', 'n charges of random spell'),
     WeaponType('Staff', '1d6, 19-20 x2, n charges of random spell')]
-    
+
 weaponTypesByCategory = {
-    "Sword": swordWeapons, 
-    "Ranged": rangedWeapons, 
-    "Hammer": hammerWeapons, 
+    "Sword": swordWeapons,
+    "Ranged": rangedWeapons,
+    "Hammer": hammerWeapons,
     "Magic": magicWeapons
 }
 
-#USER DEFINED MODIFIERS
+# USER DEFINED MODIFIERS
 magicModifiers = [
     WeaponModifier('powerful Strength', 'Increase strength by +3'),
     WeaponModifier('powerful Dexterity', 'Increase dexterity by +3'),
@@ -81,19 +85,24 @@ basicModifiers = [
     WeaponModifier('strong Will', 'The wielder gets a bonus of +3 to his Will saving throw'),
     WeaponModifier('Dexterity', 'increase dexterity of +2'),
     WeaponModifier('Revelation', 'once per day, reveals to the wielder the position of all the enemies in a room')]
-    #etc... add your own
 
-#FUNCTIONS
+
+# etc... add your own
+
+# FUNCTIONS
 def generateRandomWeaponType():
     category = choice(weaponCategories)
     return choice(weaponTypesByCategory[category])
 
+
 def generateRandomWeaponModifier():
-    if(randint(0, 2)==0): return None #50% chance of no modifier
-    if(randint(0, 99)==0): return choice(magicModifiers) #1/100 chance
+    if (randint(0, 2) == 0): return None  # 50% chance of no modifier
+    if (randint(0, 99) == 0): return choice(magicModifiers)  # 1/100 chance
     return choice(basicModifiers)
+
 
 def generateRandomWeapon():
     return Weapon(generateRandomWeaponType(), generateRandomWeaponModifier())
+
 
 print(generateRandomWeapon())

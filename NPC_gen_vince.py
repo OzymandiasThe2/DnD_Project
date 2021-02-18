@@ -4,19 +4,19 @@ from random import randint, choice
 # TODO: Thank your local Vincent for cleaning up the nightmare field of IF conditions
 
 # TYPES
-class raceType():
+class RaceType:
     def __init__(self, name, damage):
         self.name = name
         self.damage = damage
 
 
-class raceModifier():
+class RaceModifier:
     def __init__(self, name, effect):
         self.name = name
         self.effect = effect
 
 
-class Race():
+class Race:
     def __init__(self, raceType, modifier=None):
         self.raceType = raceType
         self.modifier = modifier
@@ -31,111 +31,111 @@ class Race():
 raceCategories = ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma']
 
 strengthRaces = [
-    raceType('Mountain Dwarf', '1d4, piercing'),
-    raceType('Dragonborn (1H)', '1d6, piercing'),
-    raceType('Duergar  (2H)', '2d6, 19-20 x2'),
-    raceType('Zariel Tiefling (2H)', '2d4, x4'),
-    raceType('Triton ', ''),
-    raceType('Kobold ', ''),
-    raceType('Githyanki ', ''),
-    raceType('Longtooth Shifter', ''),
-    raceType('Centaur ', ''),
-    raceType('Half-Orc', ''),
-    raceType('Human', ''),
-    raceType('Fallen Aasimar ', ''),
-    raceType('Goliath ', ''),
-    raceType('Bugbear ', ''),
-    raceType('Orc ', ''),
-    raceType('Tortle ', ''),
-    raceType('Juggernaut Warforged', ''),
-    raceType('Minotaur ', '')
+    RaceType('Mountain Dwarf', '1d4, piercing'),
+    RaceType('Dragonborn (1H)', '1d6, piercing'),
+    RaceType('Duergar  (2H)', '2d6, 19-20 x2'),
+    RaceType('Zariel Tiefling (2H)', '2d4, x4'),
+    RaceType('Triton ', ''),
+    RaceType('Kobold ', ''),
+    RaceType('Githyanki ', ''),
+    RaceType('Longtooth Shifter', ''),
+    RaceType('Centaur ', ''),
+    RaceType('Half-Orc', ''),
+    RaceType('Human', ''),
+    RaceType('Fallen Aasimar ', ''),
+    RaceType('Goliath ', ''),
+    RaceType('Bugbear ', ''),
+    RaceType('Orc ', ''),
+    RaceType('Tortle ', ''),
+    RaceType('Juggernaut Warforged', ''),
+    RaceType('Minotaur ', '')
 ]
 dexterityRaces = [
-    raceType('Elf ', ''),
-    raceType('Halfling ', ''),
-    raceType('Deep Gnome', ''),
-    raceType('Glasya Tiefling', ''),
-    raceType('Kenku ', ''),
-    raceType('Goblin ', ''),
-    raceType('Kobold ', ''),
-    raceType('Changeling ', ''),
-    raceType('Swiftstride Shifter', ''),
-    raceType('Forest Gnome', ''),
-    raceType('Human ', ''),
-    raceType('Dispater Tiefling', ''),
-    raceType('Feral Tiefling', ''),
-    raceType('Tabaxi', ''),
-    raceType('Bugbear ', ''),
-    raceType('Grung ', ''),
-    raceType('Shifter  ', ''),
-    raceType('Skirmisher Warforged ', '')
+    RaceType('Elf ', ''),
+    RaceType('Halfling ', ''),
+    RaceType('Deep Gnome', ''),
+    RaceType('Glasya Tiefling', ''),
+    RaceType('Kenku ', ''),
+    RaceType('Goblin ', ''),
+    RaceType('Kobold ', ''),
+    RaceType('Changeling ', ''),
+    RaceType('Swiftstride Shifter', ''),
+    RaceType('Forest Gnome', ''),
+    RaceType('Human ', ''),
+    RaceType('Dispater Tiefling', ''),
+    RaceType('Feral Tiefling', ''),
+    RaceType('Tabaxi', ''),
+    RaceType('Bugbear ', ''),
+    RaceType('Grung ', ''),
+    RaceType('Shifter  ', ''),
+    RaceType('Skirmisher Warforged ', '')
 ]
 constitutionRaces = [
-    raceType('Dwarf ', ''),
-    raceType('Stout halfling', ''),
-    raceType('Rock Gnome', ''),
-    raceType('Abyssal Tiefling', ''),
-    raceType('Scourge Aasimar', ''),
-    raceType('Lizardfolk ', ''),
-    raceType('Hobgoblin ', ''),
-    raceType('Orc ', ''),
-    raceType('Beasthide Shifter', ''),
-    raceType('Minotaur ', ''),
-    raceType('Half-orc', ''),
-    raceType('Human ', ''),
-    raceType('Sea-Elf', ''),
-    raceType('Levistus Tiefling', ''),
-    raceType('Goliath ', ''),
-    raceType('Triton ', ''),
-    raceType('Goblin ', ''),
-    raceType('Grung ', ''),
-    raceType('Warforged ', '')
+    RaceType('Dwarf ', ''),
+    RaceType('Stout halfling', ''),
+    RaceType('Rock Gnome', ''),
+    RaceType('Abyssal Tiefling', ''),
+    RaceType('Scourge Aasimar', ''),
+    RaceType('Lizardfolk ', ''),
+    RaceType('Hobgoblin ', ''),
+    RaceType('Orc ', ''),
+    RaceType('Beasthide Shifter', ''),
+    RaceType('Minotaur ', ''),
+    RaceType('Half-orc', ''),
+    RaceType('Human ', ''),
+    RaceType('Sea-Elf', ''),
+    RaceType('Levistus Tiefling', ''),
+    RaceType('Goliath ', ''),
+    RaceType('Triton ', ''),
+    RaceType('Goblin ', ''),
+    RaceType('Grung ', ''),
+    RaceType('Warforged ', '')
 ]
 intelligenceRaces = [
-    raceType('High-Elf', ''),
-    raceType('Human', ''),
-    raceType('Baalzebul Tiefling', ''),
-    raceType('Naiad Nymph', ''),
-    raceType('Hobgoblin', ''),
-    raceType('Githyanki', ''),
-    raceType('Changeling', ''),
-    raceType('Gnome', ''),
-    raceType('Infernal Tiefling', ''),
-    raceType('Mammon Tiefling', ''),
-    raceType('Feral Tiefling', ''),
-    raceType('Orc', ''),
-    raceType('Githzerai', ''),
-    raceType('Mephistopheles Tiefling', '')
+    RaceType('High-Elf', ''),
+    RaceType('Human', ''),
+    RaceType('Baalzebul Tiefling', ''),
+    RaceType('Naiad Nymph', ''),
+    RaceType('Hobgoblin', ''),
+    RaceType('Githyanki', ''),
+    RaceType('Changeling', ''),
+    RaceType('Gnome', ''),
+    RaceType('Infernal Tiefling', ''),
+    RaceType('Mammon Tiefling', ''),
+    RaceType('Feral Tiefling', ''),
+    RaceType('Orc', ''),
+    RaceType('Githzerai', ''),
+    RaceType('Mephistopheles Tiefling', '')
 ]
 wisdomRaces = [
-    raceType('Wood elf', ''),
-    raceType('Human', ''),
-    raceType('Fierna Tiefling', ''),
-    raceType('Firbolg ', ''),
-    raceType('Lizardfolk ', ''),
-    raceType('Tortle ', ''),
-    raceType('Centaur ', ''),
-    raceType('Hill dwarf', ''),
-    raceType('Ghostwise Halfling', ''),
-    raceType('Protector Aasimar', ''),
-    raceType('Kenku ', ''),
-    raceType('Githzerai ', ''),
-    raceType('Kalashtar ', '')
+    RaceType('Wood elf', ''),
+    RaceType('Human', ''),
+    RaceType('Fierna Tiefling', ''),
+    RaceType('Firbolg ', ''),
+    RaceType('Lizardfolk ', ''),
+    RaceType('Tortle ', ''),
+    RaceType('Centaur ', ''),
+    RaceType('Hill dwarf', ''),
+    RaceType('Ghostwise Halfling', ''),
+    RaceType('Protector Aasimar', ''),
+    RaceType('Kenku ', ''),
+    RaceType('Githzerai ', ''),
+    RaceType('Kalashtar ', '')
 ]
 charismaRaces = [
-    raceType('Half-elf', ''),
-    raceType('Human', ''),
-    raceType('Lightfoot halfling', ''),
-    raceType('Aasimar ', ''),
-    raceType('Triton ', ''),
-    raceType('Changeling ', ''),
-    raceType('Swiftstride Shifter', ''),
-    raceType('Dragonborn ', ''),
-    raceType('Drow ', ''),
-    raceType('Eladrin ', ''),
-    raceType('Tabaxi ', ''),
-    raceType('Yuan-ti Pureblood', ''),
-    raceType('Kalashtar ', '')
+    RaceType('Half-elf', ''),
+    RaceType('Human', ''),
+    RaceType('Lightfoot halfling', ''),
+    RaceType('Aasimar ', ''),
+    RaceType('Triton ', ''),
+    RaceType('Changeling ', ''),
+    RaceType('Swiftstride Shifter', ''),
+    RaceType('Dragonborn ', ''),
+    RaceType('Drow ', ''),
+    RaceType('Eladrin ', ''),
+    RaceType('Tabaxi ', ''),
+    RaceType('Yuan-ti Pureblood', ''),
+    RaceType('Kalashtar ', '')
 ]
 
 
@@ -150,28 +150,28 @@ raceTypesByCategory = {
 
 # USER DEFINED MODIFIERS
 magicModifiers = [
-    raceModifier('powerful Strength', 'Increase strength by +3'),
-    raceModifier('powerful Dexterity', 'Increase dexterity by +3'),
-    raceModifier('powerful Constitution', 'Increase constitution by +3'),
-    raceModifier('powerful Intelligence', 'Increase intelligence by +3'),
-    raceModifier('powerful Wisdom', 'Increase wisdom by +3'),
-    raceModifier('powerful Charisma', 'Increase charisma by +3')]
+    RaceModifier('powerful Strength', 'Increase strength by +3'),
+    RaceModifier('powerful Dexterity', 'Increase dexterity by +3'),
+    RaceModifier('powerful Constitution', 'Increase constitution by +3'),
+    RaceModifier('powerful Intelligence', 'Increase intelligence by +3'),
+    RaceModifier('powerful Wisdom', 'Increase wisdom by +3'),
+    RaceModifier('powerful Charisma', 'Increase charisma by +3')]
 
 basicModifiers = [
-    raceModifier('Strength', 'Increase Strength by +2'),
-    raceModifier('the Evil Slaughter', 'basic attacks deal +2d6 damage to Evil targets'),
-    raceModifier('Detect Good', 'grants the wielder the ability to Detect Good'),
-    raceModifier('Freezing', '25% chance of freezing an enemy for one round'),
-    raceModifier('Lockpicking', 'once per day, the wielder can pick a lock he wants for free'),
-    raceModifier('Invisibility', 'grants invisibility to the wielder 1 minute per day'),
-    raceModifier('the Humanoid Slayer', 'basic attacks deal +3d6 to humanoid targets'),
-    raceModifier('Detect Magic', 'once a day, grants the wielder a successful action of Detect Magic'),
-    raceModifier('Light', 'creates light in a circular region around the wielder with range 9m'),
-    raceModifier('strong Reflexes', 'The wielder gets a bonus of +3 to his Reflexes saving throw'),
-    raceModifier('strong Fortitude', 'The wielder gets a bonus of +3 to his Fortitude saving throw'),
-    raceModifier('strong Will', 'The wielder gets a bonus of +3 to his Will saving throw'),
-    raceModifier('Dexterity', 'increase dexterity of +2'),
-    raceModifier('Revelation', 'once per day, reveals to the wielder the position of all the enemies in a room')]
+    RaceModifier('Strength', 'Increase Strength by +2'),
+    RaceModifier('the Evil Slaughter', 'basic attacks deal +2d6 damage to Evil targets'),
+    RaceModifier('Detect Good', 'grants the wielder the ability to Detect Good'),
+    RaceModifier('Freezing', '25% chance of freezing an enemy for one round'),
+    RaceModifier('Lockpicking', 'once per day, the wielder can pick a lock he wants for free'),
+    RaceModifier('Invisibility', 'grants invisibility to the wielder 1 minute per day'),
+    RaceModifier('the Humanoid Slayer', 'basic attacks deal +3d6 to humanoid targets'),
+    RaceModifier('Detect Magic', 'once a day, grants the wielder a successful action of Detect Magic'),
+    RaceModifier('Light', 'creates light in a circular region around the wielder with range 9m'),
+    RaceModifier('strong Reflexes', 'The wielder gets a bonus of +3 to his Reflexes saving throw'),
+    RaceModifier('strong Fortitude', 'The wielder gets a bonus of +3 to his Fortitude saving throw'),
+    RaceModifier('strong Will', 'The wielder gets a bonus of +3 to his Will saving throw'),
+    RaceModifier('Dexterity', 'increase dexterity of +2'),
+    RaceModifier('Revelation', 'once per day, reveals to the wielder the position of all the enemies in a room')]
 
 
 # etc... add your own

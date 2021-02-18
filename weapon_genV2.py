@@ -7,7 +7,7 @@ https://github.com/pgoodjohn/Dungeons-And-Dragons-Tools-Python/blob/master/Relea
 
 
 # TODO: create class by using the global variables
-# TODO: Add some addtional magic effects/ and learn if there are enchantments for DND5e
+# TODO: Add some additional magic effects/ and learn if there are enchantments for DND5e
 # TODO: convert some of the long as rolls into list(s)/dictionary and just .choice everything
 
 def categoryOfWeapon(int):
