@@ -74,6 +74,6 @@ def InputStats():
           "CHA:" + str(temp_CHA))
 
 
-statDetails()
+# statDetails()
 
 

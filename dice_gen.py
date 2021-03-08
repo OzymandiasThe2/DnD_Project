@@ -1,17 +1,17 @@
-from random import randint, choice, randrange
+from random import randint
 
 
-def diceDetails(): # prints user selection
+def dice_details(): # prints user selection
     dice = []
-    numberDie = int(input("Amount of dice being rolled: "))
+    number_of_die = int(input("Amount of dice being rolled: "))
     # sides = int(input("Amount of sides on the dice: "))
-    for x in range(numberDie):
+    for x in range(number_of_die):
         dice.append(DiceRoll())
     for x in dice:
-        x.setSides(int(input("Amount of sides on dice: ")))
-        x.randRoll()
+        x.set_sides(int(input("Amount of sides on dice: ")))
+        x.randomize_roll()
     for x in dice:
-        print(x.getRoll())
+        print(x.get_roll())
 
 
 class DiceRoll:
@@ -20,14 +20,14 @@ class DiceRoll:
         self._roll = 0
         self._amount = 0
 
-    def setSides(self, amount):
+    def set_sides(self, amount):
         self._amount = amount
 
-    def randRoll(self):
+    def randomize_roll(self):
         self._roll = randint(1, self._amount)
         return self._roll
 
-    def getRoll(self):
+    def get_roll(self):
         return self._roll
 
     def reset(self):

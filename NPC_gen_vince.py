@@ -1,10 +1,8 @@
 from random import randint, choice
 
 
-# TODO: Thank your local Vincent for cleaning up the nightmare field of IF conditions
-
 # TYPES
-class RaceType:
+class race:
     def __init__(self, name, damage):
         self.name = name
         self.damage = damage
@@ -17,135 +15,134 @@ class RaceModifier:
 
 
 class Race:
-    def __init__(self, raceType, modifier=None):
-        self.raceType = raceType
+    def __init__(self, race_type, modifier=None):
+        self.raceType = race_type
         self.modifier = modifier
 
     def __str__(self):
-        if (self.modifier == None):
+        if self.modifier is None:
             return self.raceType.name + "\n" + self.raceType.damage
         return self.raceType.name + " of " + self.modifier.name + "\n" + self.raceType.damage + "\n" + self.modifier.effect
 
 
-# USER DEFINED WEAPONS
-raceCategories = ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma']
+# USER DEFINED MAIN STATS
+race_categories = ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma']
 
-strengthRaces = [
-    RaceType('Mountain Dwarf', '1d4, piercing'),
-    RaceType('Dragonborn (1H)', '1d6, piercing'),
-    RaceType('Duergar  (2H)', '2d6, 19-20 x2'),
-    RaceType('Zariel Tiefling (2H)', '2d4, x4'),
-    RaceType('Triton ', ''),
-    RaceType('Kobold ', ''),
-    RaceType('Githyanki ', ''),
-    RaceType('Longtooth Shifter', ''),
-    RaceType('Centaur ', ''),
-    RaceType('Half-Orc', ''),
-    RaceType('Human', ''),
-    RaceType('Fallen Aasimar ', ''),
-    RaceType('Goliath ', ''),
-    RaceType('Bugbear ', ''),
-    RaceType('Orc ', ''),
-    RaceType('Tortle ', ''),
-    RaceType('Juggernaut Warforged', ''),
-    RaceType('Minotaur ', '')
+strength_races = [
+    race('Mountain Dwarf', '1d4, piercing'),
+    race('Dragonborn (1H)', '1d6, piercing'),
+    race('Duergar  (2H)', '2d6, 19-20 x2'),
+    race('Zariel Tiefling (2H)', '2d4, x4'),
+    race('Triton ', ''),
+    race('Kobold ', ''),
+    race('Githyanki ', ''),
+    race('Longtooth Shifter', ''),
+    race('Centaur ', ''),
+    race('Half-Orc', ''),
+    race('Human', ''),
+    race('Fallen Aasimar ', ''),
+    race('Goliath ', ''),
+    race('Bugbear ', ''),
+    race('Orc ', ''),
+    race('Tortle ', ''),
+    race('Juggernaut Warforged', ''),
+    race('Minotaur ', '')
 ]
-dexterityRaces = [
-    RaceType('Elf ', ''),
-    RaceType('Halfling ', ''),
-    RaceType('Deep Gnome', ''),
-    RaceType('Glasya Tiefling', ''),
-    RaceType('Kenku ', ''),
-    RaceType('Goblin ', ''),
-    RaceType('Kobold ', ''),
-    RaceType('Changeling ', ''),
-    RaceType('Swiftstride Shifter', ''),
-    RaceType('Forest Gnome', ''),
-    RaceType('Human ', ''),
-    RaceType('Dispater Tiefling', ''),
-    RaceType('Feral Tiefling', ''),
-    RaceType('Tabaxi', ''),
-    RaceType('Bugbear ', ''),
-    RaceType('Grung ', ''),
-    RaceType('Shifter  ', ''),
-    RaceType('Skirmisher Warforged ', '')
+dexterity_races = [
+    race('Elf ', ''),
+    race('Halfling ', ''),
+    race('Deep Gnome', ''),
+    race('Glasya Tiefling', ''),
+    race('Kenku ', ''),
+    race('Goblin ', ''),
+    race('Kobold ', ''),
+    race('Changeling ', ''),
+    race('Swiftstride Shifter', ''),
+    race('Forest Gnome', ''),
+    race('Human ', ''),
+    race('Dispater Tiefling', ''),
+    race('Feral Tiefling', ''),
+    race('Tabaxi', ''),
+    race('Bugbear ', ''),
+    race('Grung ', ''),
+    race('Shifter  ', ''),
+    race('Skirmisher Warforged ', '')
 ]
-constitutionRaces = [
-    RaceType('Dwarf ', ''),
-    RaceType('Stout halfling', ''),
-    RaceType('Rock Gnome', ''),
-    RaceType('Abyssal Tiefling', ''),
-    RaceType('Scourge Aasimar', ''),
-    RaceType('Lizardfolk ', ''),
-    RaceType('Hobgoblin ', ''),
-    RaceType('Orc ', ''),
-    RaceType('Beasthide Shifter', ''),
-    RaceType('Minotaur ', ''),
-    RaceType('Half-orc', ''),
-    RaceType('Human ', ''),
-    RaceType('Sea-Elf', ''),
-    RaceType('Levistus Tiefling', ''),
-    RaceType('Goliath ', ''),
-    RaceType('Triton ', ''),
-    RaceType('Goblin ', ''),
-    RaceType('Grung ', ''),
-    RaceType('Warforged ', '')
+constitution_races = [
+    race('Dwarf ', ''),
+    race('Stout halfling', ''),
+    race('Rock Gnome', ''),
+    race('Abyssal Tiefling', ''),
+    race('Scourge Aasimar', ''),
+    race('Lizardfolk ', ''),
+    race('Hobgoblin ', ''),
+    race('Orc ', ''),
+    race('Beasthide Shifter', ''),
+    race('Minotaur ', ''),
+    race('Half-orc', ''),
+    race('Human ', ''),
+    race('Sea-Elf', ''),
+    race('Levistus Tiefling', ''),
+    race('Goliath ', ''),
+    race('Triton ', ''),
+    race('Goblin ', ''),
+    race('Grung ', ''),
+    race('Warforged ', '')
 ]
-intelligenceRaces = [
-    RaceType('High-Elf', ''),
-    RaceType('Human', ''),
-    RaceType('Baalzebul Tiefling', ''),
-    RaceType('Naiad Nymph', ''),
-    RaceType('Hobgoblin', ''),
-    RaceType('Githyanki', ''),
-    RaceType('Changeling', ''),
-    RaceType('Gnome', ''),
-    RaceType('Infernal Tiefling', ''),
-    RaceType('Mammon Tiefling', ''),
-    RaceType('Feral Tiefling', ''),
-    RaceType('Orc', ''),
-    RaceType('Githzerai', ''),
-    RaceType('Mephistopheles Tiefling', '')
+intelligence_races = [
+    race('High-Elf', ''),
+    race('Human', ''),
+    race('Baalzebul Tiefling', ''),
+    race('Naiad Nymph', ''),
+    race('Hobgoblin', ''),
+    race('Githyanki', ''),
+    race('Changeling', ''),
+    race('Gnome', ''),
+    race('Infernal Tiefling', ''),
+    race('Mammon Tiefling', ''),
+    race('Feral Tiefling', ''),
+    race('Orc', ''),
+    race('Githzerai', ''),
+    race('Mephistopheles Tiefling', '')
 ]
-wisdomRaces = [
-    RaceType('Wood elf', ''),
-    RaceType('Human', ''),
-    RaceType('Fierna Tiefling', ''),
-    RaceType('Firbolg ', ''),
-    RaceType('Lizardfolk ', ''),
-    RaceType('Tortle ', ''),
-    RaceType('Centaur ', ''),
-    RaceType('Hill dwarf', ''),
-    RaceType('Ghostwise Halfling', ''),
-    RaceType('Protector Aasimar', ''),
-    RaceType('Kenku ', ''),
-    RaceType('Githzerai ', ''),
-    RaceType('Kalashtar ', '')
+wisdom_races = [
+    race('Wood elf', ''),
+    race('Human', ''),
+    race('Fierna Tiefling', ''),
+    race('Firbolg ', ''),
+    race('Lizardfolk ', ''),
+    race('Tortle ', ''),
+    race('Centaur ', ''),
+    race('Hill dwarf', ''),
+    race('Ghostwise Halfling', ''),
+    race('Protector Aasimar', ''),
+    race('Kenku ', ''),
+    race('Githzerai ', ''),
+    race('Kalashtar ', '')
 ]
-charismaRaces = [
-    RaceType('Half-elf', ''),
-    RaceType('Human', ''),
-    RaceType('Lightfoot halfling', ''),
-    RaceType('Aasimar ', ''),
-    RaceType('Triton ', ''),
-    RaceType('Changeling ', ''),
-    RaceType('Swiftstride Shifter', ''),
-    RaceType('Dragonborn ', ''),
-    RaceType('Drow ', ''),
-    RaceType('Eladrin ', ''),
-    RaceType('Tabaxi ', ''),
-    RaceType('Yuan-ti Pureblood', ''),
-    RaceType('Kalashtar ', '')
+charisma_races = [
+    race('Half-elf', ''),
+    race('Human', ''),
+    race('Lightfoot halfling', ''),
+    race('Aasimar ', ''),
+    race('Triton ', ''),
+    race('Changeling ', ''),
+    race('Swiftstride Shifter', ''),
+    race('Dragonborn ', ''),
+    race('Drow ', ''),
+    race('Eladrin ', ''),
+    race('Tabaxi ', ''),
+    race('Yuan-ti Pureblood', ''),
+    race('Kalashtar ', '')
 ]
 
-
-raceTypesByCategory = {
-    "Strength": strengthRaces,
-    "Dexterity": dexterityRaces,
-    "Constitution": constitutionRaces,
-    "Intelligence": intelligenceRaces,
-    "Wisdom": wisdomRaces,
-    "Charisma": charismaRaces
+race_types_by_category = {
+    "Strength": strength_races,
+    "Dexterity": dexterity_races,
+    "Constitution": constitution_races,
+    "Intelligence": intelligence_races,
+    "Wisdom": wisdom_races,
+    "Charisma": charisma_races
 }
 
 # USER DEFINED MODIFIERS
@@ -177,19 +174,21 @@ basicModifiers = [
 # etc... add your own
 
 # FUNCTIONS
-def generateRandomRaceType():
-    category = choice(raceCategories)
-    return choice(raceTypesByCategory[category])
+def generate_random_race_type():
+    category = choice(race_categories)
+    return choice(race_types_by_category[category])
 
 
-def generateRandomRaceModifier():
-    if (randint(0, 2) == 0): return None  # 50% chance of no modifier
-    if (randint(0, 99) == 0): return choice(magicModifiers)  # 1/100 chance
+def generate_random_race_modifier():
+    if randint(0, 2) == 0:
+        return None  # 50% chance of no modifier
+    if randint(0, 99) == 0:
+        return choice(magicModifiers)  # 1/100 chance
     return choice(basicModifiers)
 
 
-def generateRandomRace():
-    return Race(generateRandomRaceType(), generateRandomRaceModifier())
+def generate_random_race():
+    return Race(generate_random_race_type(), generate_random_race_modifier())
 
 
-print(generateRandomRace())
+print(generate_random_race())

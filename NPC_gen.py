@@ -2,7 +2,7 @@ from random import randint, choice
 
 # STUFF TO USE!!!
 # http://neverwinter.gamepedia.com/Half-Elf#Names
-from name_gen import nameDetails, Names
+from name_gen import name_details, Names
 
 
 def generateNPC():

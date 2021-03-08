@@ -1,54 +1,108 @@
-from random import randint, choice, randrange
+from random import randint, choice
 
 
-def weaponDetails():
-    weaponTypes = ['Handgun', 'Bow', 'Rifle', 'Sword', 'Hammer', 'Axe', 'Staff']
-    weaponSize = ['Tiny', 'Small', 'Normal', 'Large', 'Enormous']
-    weaponRarity = ['Trash', 'Average', 'Magical', 'Legendary']
-    weaponNames = {'Sword': ['Rapier of Force', 'Adventurous Claymore'],
-                   'Hammer': ['Destiny Smasher', 'Test'],
-                   'Staff': ['Monkey Lords Staff', 'Test'],
-                   'Rifle': ['Deadshot', 'Test'],
-                   'Handgun': ['Golden Gun', 'Test'],
-                   'Bow': ['Ancestral Relic Bow', 'Test'],
-                   'Axe': ['Talinoq Bloodletter', 'Test']}
-    rw = RandWeapon(weaponSize, weaponRarity, weaponTypes)
-    rw = rw.get_weapon()
-    print(rw)  # This will calc your weapons"""
-    if 'Legendary' in rw:
-        print("Congratulation you got the:")
-        if 'Handgun' in rw:
-            print(choice(weaponNames['Handgun']))
-        if 'Bow' in rw:
-            print(choice(weaponNames['Bow']))
-        if 'Rifle' in rw:
-            print(choice(weaponNames['Rifle']))
-        if 'Sword' in rw:
-            print(choice(weaponNames['Sword']))
-        if 'Hammer' in rw:
-            print(choice(weaponNames['Hammer']))
-        if 'Axe' in rw:
-            print(choice(weaponNames['Axe']))
-        if 'Staff' in rw:
-            print(choice(weaponNames['Staff']))
-    # TODO: add more variation and if statements so you don't get a long ass gun
+# TODO: Thank your local Vincent for cleaning up the nightmare field of IF conditions
+
+# TYPES
+class WeaponType():
+    def __init__(self, name, damage):
+        self.name = name
+        self.damage = damage
 
 
-class RandWeapon:
+class WeaponModifier():
+    def __init__(self, name, effect):
+        self.name = name
+        self.effect = effect
 
-    def __init__(self, weaponStats, weaponRarity, weaponTypes):
-        self.weaponStats = weaponStats
-        self.weaponTypes = weaponTypes
-        self.weaponRarity = weaponRarity
 
-    def getRandomStats(self):
-        return self.weaponStats[randint(0, len(self.weaponStats) - 1)]
+class Weapon():
+    def __init__(self, weaponType, modifier=None):
+        self.weaponType = weaponType
+        self.modifier = modifier
 
-    def getRandomTypes(self):
-        return self.weaponTypes[randint(0, len(self.weaponTypes) - 1)]
+    def __str__(self):
+        if (self.modifier == None):
+            return self.weaponType.name + "\n" + self.weaponType.damage
+        return self.weaponType.name + " of " + self.modifier.name + "\n" + self.weaponType.damage + "\n" + self.modifier.effect
 
-    def getRandomRarity(self):
-        return self.weaponRarity[randint(0, len(self.weaponRarity) - 1)]
 
-    def get_weapon(self):
-        return '{} {} {}'.format(self.getRandomStats(), self.getRandomRarity(), self.getRandomTypes())
+# USER DEFINED WEAPONS
+weapon_categories = ['Sword', 'Ranged', 'Hammer', 'Magic']
+
+sword_weapons = [
+    WeaponType('Dagger', '1d4, piercing'),
+    WeaponType('Longsword (1H)', '1d6, piercing'),
+    WeaponType('Greatsword (2H)', '2d6, 19-20 x2'),
+    WeaponType('Scythe (2H)', '2d4, x4'),
+    WeaponType('Bastard Sword', '1d10, 19-20 x2')]
+ranged_weapons = [
+    WeaponType('Crossbow', '1d8, 19-20 x2'),
+    WeaponType('Longbow', '1d8, x3'),
+    WeaponType('Composite Longbow', '1d8, x3'),
+    WeaponType('Shortbow', '1d6, x3'),
+    WeaponType('Composite Shortbow', '1d6, x3'),
+    WeaponType('Repeating Crossbow', '1d8, 19-20 x2')]
+hammer_weapons = [
+    WeaponType('Morningstar (1H)', '1d8, x2'),
+    WeaponType('Warhammer (1H)', '1d8, x3'),
+    WeaponType('Waraxe (1H)', '1d10, x3'),
+    WeaponType('Greataxe (2H)', '1d12, x3'),
+    WeaponType('Great club (2H)', '1d10, x2'),
+    WeaponType('Great Hammer (2H, requires 18 in strength)', '1d12, 19-20 x3')]
+magic_weapons = [
+    WeaponType('Wand', 'n charges of random spell'),
+    WeaponType('Staff', '1d6, 19-20 x2, n charges of random spell')]
+
+weapon_types_by_category = {
+    "Sword": sword_weapons,
+    "Ranged": ranged_weapons,
+    "Hammer": hammer_weapons,
+    "Magic": magic_weapons
+}
+
+# USER DEFINED MODIFIERS
+magic_modifiers = [
+    WeaponModifier('powerful Strength', 'Increase strength by +3'),
+    WeaponModifier('powerful Dexterity', 'Increase dexterity by +3'),
+    WeaponModifier('powerful Constitution', 'Increase constitution by +3'),
+    WeaponModifier('powerful Intelligence', 'Increase intelligence by +3'),
+    WeaponModifier('powerful Wisdom', 'Increase wisdom by +3'),
+    WeaponModifier('powerful Charisma', 'Increase charisma by +3')]
+
+basic_modifiers = [
+    WeaponModifier('Strength', 'Increase Strength by +2'),
+    WeaponModifier('the Evil Slaughter', 'basic attacks deal +2d6 damage to Evil targets'),
+    WeaponModifier('Detect Good', 'grants the wielder the ability to Detect Good'),
+    WeaponModifier('Freezing', '25% chance of freezing an enemy for one round'),
+    WeaponModifier('Lockpicking', 'once per day, the wielder can pick a lock he wants for free'),
+    WeaponModifier('Invisibility', 'grants invisibility to the wielder 1 minute per day'),
+    WeaponModifier('the Humanoid Slayer', 'basic attacks deal +3d6 to humanoid targets'),
+    WeaponModifier('Detect Magic', 'once a day, grants the wielder a successful action of Detect Magic'),
+    WeaponModifier('Light', 'creates light in a circular region around the wielder with range 9m'),
+    WeaponModifier('strong Reflexes', 'The wielder gets a bonus of +3 to his Reflexes saving throw'),
+    WeaponModifier('strong Fortitude', 'The wielder gets a bonus of +3 to his Fortitude saving throw'),
+    WeaponModifier('strong Will', 'The wielder gets a bonus of +3 to his Will saving throw'),
+    WeaponModifier('Dexterity', 'increase dexterity of +2'),
+    WeaponModifier('Revelation', 'once per day, reveals to the wielder the position of all the enemies in a room')]
+
+
+# etc... add your own
+
+# FUNCTIONS
+def generate_random_weapon_type():
+    category = choice(weapon_categories)
+    return choice(weapon_types_by_category[category])
+
+
+def generate_random_weapon_modifier():
+    if (randint(0, 2) == 0): return None  # 50% chance of no modifier
+    if (randint(0, 99) == 0): return choice(magic_modifiers)  # 1/100 chance
+    return choice(basic_modifiers)
+
+
+def generate_random_weapon():
+    return Weapon(generate_random_weapon_type(), generate_random_weapon_modifier())
+
+#
+# print(generateRandomWeapon())

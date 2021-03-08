@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 
-from Main.dice_gen import diceDetails
+from dice_gen import diceDetails
 
 
 def cancelProg():
