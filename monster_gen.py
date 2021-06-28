@@ -54,6 +54,6 @@ class MonsterNPC:
 
         print("Monster type is: ", monster_type)
         print("Monster is: ")
-        return '%s' % (monster)
+        return '%s' % monster
 
 

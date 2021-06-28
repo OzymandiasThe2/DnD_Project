@@ -1,14 +1,14 @@
 from tkinter import *
 from tkinter import messagebox
 
-from dice_gen import diceDetails
+from dice_gen import dice_details
 
 
-def cancelProg():
+def cancel_app():
     quit()
 
 
-class DNDmain:
+class DNDMain:
     window = Tk()
     window.title('D&D Generator')
     window.geometry('250x250')
@@ -17,13 +17,13 @@ class DNDmain:
 
     labe1 = Label(window, text="Welcome brave adventure.\nWhat is your request?")
 
-    but1 = Button(window, text='Dice Rolls', bg="orange", fg="purple", )
+    but1 = Button(window, text='Dice Rolls', bg="orange", fg="purple",)
     but2 = Button(window, text='Stat Gen', bg="orange", fg="purple")
     but3 = Button(window, text='Name Gen', bg="orange", fg="purple")
     but4 = Button(window, text='Monster Gen', bg="orange", fg="purple")
     but5 = Button(window, text='Loot Gen', bg="orange", fg="purple")
     but6 = Button(window, text='NPC Gen', bg="orange", fg="purple")
-    but7 = Button(window, text='Exit Program', bg="orange", fg="purple", command=cancelProg)
+    but7 = Button(window, text='Exit Program', bg="orange", fg="purple", command=cancel_app)
 
     but1.grid(column=0, row=3)
     but2.grid(column=0, row=4)
@@ -35,9 +35,9 @@ class DNDmain:
 
     labe1.grid(column=0, row=0)
 
-    operationMenu = Menu(menubar, tearoff=0)
-    exitMenu = Menu(menubar, tearoff=0)
-    menubar.add_cascade(label="Exit", menu=exitMenu)
-    exitMenu.add_command(label="Quit", command=window.quit)
+    operation_menu = Menu(menubar, tearoff=0)
+    exit_menu = Menu(menubar, tearoff=0)
+    menubar.add_cascade(label="Exit", menu=exit_menu)
+    exit_menu.add_command(label="Quit", command=window.quit)
 
     window.mainloop()

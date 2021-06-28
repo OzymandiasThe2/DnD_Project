@@ -1,11 +1,10 @@
-from random import randint, choice, randrange
-
-from dice_gen import DiceRoll, dice_details
+from dice_gen import dice_details
 from monster_gen import monster_details
-from name_gen import Names, name_details
-from stat_gen import RanStats, InputStats, statDetails
+from name_gen import name_details
+from player_gen import final_ran_stats
 from weapon_gen import generate_random_weapon
 from NPC_gen_vince import generate_random_race
+
 
 def main():
     def clear(arr):
@@ -21,10 +20,10 @@ while True:
         if selector == 0 or selector is None:
             print("Goodbye")
             break
-        if selector == 1:
+        if selector == 1:  # Dice Roll
             dice_details()
-        elif selector == 2:
-            statDetails()
+        elif selector == 2:  # Player/Stat Gen
+            final_ran_stats()
         elif selector == 3:
             name_details()
         elif selector == 4:

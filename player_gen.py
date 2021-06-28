@@ -62,12 +62,12 @@ def final_ran_stats():
     stat_type_value = []
     stat_type_key = ["str", "dex", "con", "int", "wis", "cha"]
     for stat in stat_type_key:
-        D6_Roll = [1, 2, 3, 4, 5, 6]  # represents a D6 (6-sided die)
-        D6_Roll = choices(D6_Roll, k=4)  # pick a number from a D6, four times, into a list
-        print(stat, "=", D6_Roll)  # DEBUG Line: prints the numbers of the 4 dice
-        D6_Roll.remove(min(D6_Roll))  # remove the lowest number from rolls(list)
-        print(stat, "=", D6_Roll)  # DEBUG Line: prints the updated dice list
-        list_sum_of_dice = sum(D6_Roll)  # add up remaining three dice rolls
+        d6_roll = [1, 2, 3, 4, 5, 6]  # represents a D6 (6-sided die)
+        d6_roll = choices(d6_roll, k=4)  # pick a number from a D6, four times, into a list
+        print(stat, "=", d6_roll)  # DEBUG Line: prints the numbers of the 4 dice
+        d6_roll.remove(min(d6_roll))  # remove the lowest number from rolls(list)
+        print(stat, "=", d6_roll)  # DEBUG Line: prints the updated dice list
+        list_sum_of_dice = sum(d6_roll)  # add up remaining three dice rolls
         # TODO: make a pity roll if you get only 1s
         print(stat, "=", list_sum_of_dice)  # DEBUG Line: prints the added sum of all remaining dice
         print("--------------------")

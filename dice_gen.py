@@ -1,7 +1,7 @@
 from random import randint
 
 
-def dice_details(): # prints user selection
+def dice_details():  # prints user selection
     dice = []
     number_of_die = int(input("Amount of dice being rolled: "))
     # sides = int(input("Amount of sides on the dice: "))
@@ -32,4 +32,3 @@ class DiceRoll:
 
     def reset(self):
         self._roll = 0
-
